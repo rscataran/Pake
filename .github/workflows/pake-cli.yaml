@@ -294,7 +294,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload MSI (Windows)
-        if: runner.os == 'Windows'
+        if: runner.os == 'Windows' && inputs.keep-binary == false
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.name }}-Windows
@@ -302,7 +302,7 @@ jobs:
           retention-days: 3
 
       - name: Upload EXE (Windows)
-        if: runner.os == 'Windows'
+        if: runner.os == 'Windows'  && inputs.keep-binary == true
         uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.name }}-Windows

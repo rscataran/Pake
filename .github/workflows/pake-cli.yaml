@@ -10,7 +10,7 @@ on:
       platform:
         description: "Platform"
         required: true
-        default: "macos-latest"
+        default: "windows-latest"
         type: choice
         options:
           - "windows-latest"
@@ -81,7 +81,7 @@ on:
       targets:
         description: "Package formats (comma-separated: deb,appimage,rpm,zst)"
         required: false
-        default: "deb"
+        default: "x64"
 
 jobs:
   build:

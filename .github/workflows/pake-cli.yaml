@@ -48,6 +48,21 @@ on:
         required: false
         type: boolean
         default: false
+      maximize:
+        description: "Start Windows Maximized"
+        required: false
+        type: boolean
+        default: false
+      dark-mode:
+        description: "Use Dark-Mode"
+        required: false
+        type: boolean
+        default: false
+      keep-binary:
+        description: "Keep Binary"
+        required: false
+        type: boolean
+        default: false
       hide_title_bar:
         description: "Hide title bar (macOS only)"
         required: false
@@ -137,6 +152,18 @@ jobs:
           if [ "${{ inputs.fullscreen }}" == "true" ]; then
             ARGS+=("--fullscreen")
           fi
+          
+          if [ "${{ inputs.maximize }}" == "true" ]; then
+            ARGS+=("--maximize")
+          fi
+
+          if [ "${{ inputs.dark-mode }}" == "true" ]; then
+            ARGS+=("--dark-mode")
+          fi
+
+          if [ "${{ inputs.keep-binary }}" == "true" ]; then
+            ARGS+=("--keep-binary")
+          fi
 
           if [ "${{ inputs.hide_title_bar }}" == "true" ]; then
             ARGS+=("--hide-title-bar")
@@ -186,6 +213,18 @@ jobs:
 
           if ("${{ inputs.fullscreen }}" -eq "true") {
             $args += "--fullscreen"
+          }
+          
+          if ("${{ inputs.maximize }}" -eq "true") {
+            $args += "--maximize"
+          }
+
+          if ("${{ inputs.dark-mode }}" -eq "true") {
+            $args += "--dark-mode"
+          }
+
+          if ("${{ inputs.keep-binary }}" -eq "true") {
+            $args += "--keep-binary"
           }
 
           if ("${{ inputs.hide_title_bar }}" -eq "true") {
